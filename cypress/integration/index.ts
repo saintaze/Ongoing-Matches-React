@@ -3,5 +3,5 @@ beforeEach(() => {
   })
   
   it('has title', () => {
-    cy.contains('Ongoing Games')
+    cy.contains('On Going Games')
   })
