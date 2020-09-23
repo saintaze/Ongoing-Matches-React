@@ -10,8 +10,6 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "chance": "^1.1.7",
-    "chancejs": "^0.0.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
@@ -22,6 +20,8 @@
     "server": "node ./server",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:cypress": "cypress open",
+    "test:e2e": "start-test start 3000 server 3001 test:cypress",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^5.2.0",
     "express": "^4.17.1",
     "ws": "^7.3.1"
   }
