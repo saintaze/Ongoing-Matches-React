@@ -2,11 +2,17 @@
 
 # Grid Frontend Coding Test
 
-#Requirements
+# Requirements
 
 Please do the following tasks in order
 
-- 
+- Retreive the data from the static series endpoint, and output this into a table or list
+- Add in the ability to be able to filter this table/list by title
+- Use whatever your feel comfortable to style the table/list following the design below
+- We also have a live api available, `ws://localhost:3001/live` this provides scores for all the currently on going series. Can we have these scores populated like the design in realtime? Where the scores in the bracket are the series score, and scores not in brackets are the latest game's score. 
+
+## Table Designs
+- https://www.figma.com/file/CoIVwq0YUHfHnTvnUTpiAS/Interview-Design
 
 
 ## Getting started
