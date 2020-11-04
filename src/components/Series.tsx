@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
+import moment from 'moment';
 
 import './Series.scss';
 
@@ -22,6 +23,10 @@ const Series = () => {
    fetchSeries();
   },[]);
 
+  const formatTime = (str: string) => {
+    return moment(str).format('hh:mm');
+  }
+
   const filteredRows = () => {
     const titleRegex = new RegExp(title, 'i');
     const tournamentRegex = new RegExp(tournament, 'i');
@@ -40,7 +45,7 @@ const Series = () => {
       return (
         <tr className="Series__row--body" key={s.id}>
           <td className="Series__cell-body" >{s.title}</td>
-          <td className="Series__cell-body" >{s.startTime}</td>
+          <td className="Series__cell-body" >{formatTime(s.startTime)}</td>
           {
             s.teams.map((t:any) => (
                <td className="Series__cell-body"  key={t.id}>
@@ -49,7 +54,7 @@ const Series = () => {
               </td>
             ))
           }
-          <td className="Series__cell-body" >{s.tournament.name}</td>
+          <td className="Series__cell-body" >{s.tournament.shortName}</td>
         </tr>
       );
     });
