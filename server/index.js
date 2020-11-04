@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors')
 const { Server } = require("ws");
 
 const app = express();
@@ -6,6 +7,8 @@ const port = 3001;
 
 const seriesList = require("./responses/series");
 const liveScores = require("./responses/liveGenerator");
+
+app.use(cors());
 
 app.get("/series", (req, res) => {
   res.json(seriesList);
