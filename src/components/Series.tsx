@@ -6,6 +6,8 @@ import './Series.scss';
 const Series = () => {
 
   const [series, setSeries] = useState([]);
+  const [title, setTitle] = useState('');
+  const [tournament, setTournament] = useState('');
 
   const fetchSeries = async () => {
     try {
@@ -20,20 +22,33 @@ const Series = () => {
    fetchSeries();
   },[]);
 
-  const renderRow = () => {
-    return series.map((s:any )=> {
+  const filteredRows = () => {
+    const titleRegex = new RegExp(title, 'i');
+    const tournamentRegex = new RegExp(tournament, 'i');
+    return series.filter((s:any) => {
+      return s['title'].match(titleRegex) && s['tournament']['name'].match(tournamentRegex);
+    });
+  }
+
+  const renderHeadRow = () => {
+    const headerCells = ['title', 'time', 'team1', 'team2', 'tournament'];
+    return <tr>{ headerCells.map(c => <th key={c}>{c}</th>) }</tr>;
+  }
+
+  const renderBodyRows = () => {
+    return filteredRows().map((s:any )=> {
       return (
-        <tr>
+        <tr key={s.id}>
           <td>{s.title}</td>
           <td>{s.startTime}</td>
-          <td>
-            <span>{s.teams[0].name}</span>
-            <img src={s.teams[0].logoUrl} alt="logo"/>
-          </td>
-          <td>
-            <span>{s.teams[1].name}</span>
-            <img src={s.teams[1].logoUrl} alt="logo"/>
-          </td>
+          {
+            s.teams.map((t:any) => (
+               <td key={t.id}>
+                <span>{t.name}</span>
+                <img src={t.logoUrl} alt="logo"/>
+              </td>
+            ))
+          }
           <td>{s.tournament.name}</td>
         </tr>
       );
@@ -43,19 +58,17 @@ const Series = () => {
 
   return (
     <div className="Series">
+      <div>
+        <input type="text" value={title} placeholder="Filter By Title..." onChange={e => setTitle(e.target.value) }/>
+        <input type="text" value={tournament} placeholder="Filter By Tournament..." onChange={e => setTournament(e.target.value) }/>
+      </div>
       <table className="series-table">
         <thead>
-          <tr>
-            <th>title</th>
-            <th>time</th>
-            <th>team1</th>
-            <th>team2</th>
-            <th>tournament</th>
-          </tr>
+          {renderHeadRow()}
         </thead>
-          <tbody>
-           {renderRow()}
-          </tbody>
+        <tbody>
+          {renderBodyRows()}
+        </tbody>
       </table>
     </div>
   )
