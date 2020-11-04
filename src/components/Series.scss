@@ -1,7 +1,39 @@
 .Series {
-  .series-table {
-    img {
-      width: 2rem;
+  // min-height: 100vh;
+  // background-color: #f7f7f7;
+
+  &__heading {
+  }
+
+  &__filters {
+  }
+
+  &__filter {
+  }
+
+  &__table {
+  }
+
+  &__row {
+    &--head {
     }
+
+    &--body {
+    }
+  }
+
+  &__cell {
+    &--head {
+    }
+
+    &--body {
+    }
+  }
+
+  &__team-name {
+  }
+
+  &__team-logo {
+    width: 2rem;
   }
 }

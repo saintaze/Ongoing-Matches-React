@@ -7,7 +7,6 @@ import './index.scss';
 export const App = () => {
   return (
     <div>
-      <h1>On Going Games</h1>
       <Series />
     </div>
   );

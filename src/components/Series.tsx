@@ -32,24 +32,24 @@ const Series = () => {
 
   const renderHeadRow = () => {
     const headerCells = ['title', 'time', 'team1', 'team2', 'tournament'];
-    return <tr>{ headerCells.map(c => <th key={c}>{c}</th>) }</tr>;
+    return <tr className="Series__row--head">{ headerCells.map(c => <th className="Series__cell-head" key={c}>{c}</th>) }</tr>;
   }
 
   const renderBodyRows = () => {
-    return filteredRows().map((s:any )=> {
+    return filteredRows().map((s:any)=> {
       return (
-        <tr key={s.id}>
-          <td>{s.title}</td>
-          <td>{s.startTime}</td>
+        <tr className="Series__row--body" key={s.id}>
+          <td className="Series__cell-body" >{s.title}</td>
+          <td className="Series__cell-body" >{s.startTime}</td>
           {
             s.teams.map((t:any) => (
-               <td key={t.id}>
-                <span>{t.name}</span>
-                <img src={t.logoUrl} alt="logo"/>
+               <td className="Series__cell-body"  key={t.id}>
+                <span className="Series__team-name" >{t.name}</span>
+                <img className="Series__team-logo"  src={t.logoUrl} alt="logo"/>
               </td>
             ))
           }
-          <td>{s.tournament.name}</td>
+          <td className="Series__cell-body" >{s.tournament.name}</td>
         </tr>
       );
     });
@@ -58,15 +58,16 @@ const Series = () => {
 
   return (
     <div className="Series">
-      <div>
-        <input type="text" value={title} placeholder="Filter By Title..." onChange={e => setTitle(e.target.value) }/>
-        <input type="text" value={tournament} placeholder="Filter By Tournament..." onChange={e => setTournament(e.target.value) }/>
+      <h1 className="Series__heading">On Going Games</h1>
+      <div className="Series__filters">
+        <input className="Series__filter" type="text" value={title} placeholder="Filter By Title..." onChange={e => setTitle(e.target.value) }/>
+        <input className="Series__filter" type="text" value={tournament} placeholder="Filter By Tournament..." onChange={e => setTournament(e.target.value) }/>
       </div>
-      <table className="series-table">
+      <table className="Series__table">
         <thead>
           {renderHeadRow()}
         </thead>
-        <tbody>
+        <tbody >
           {renderBodyRows()}
         </tbody>
       </table>
