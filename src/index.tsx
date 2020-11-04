@@ -1,10 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Series from './components/Series';
+
+import './index.scss';
 
 export const App = () => {
   return (
     <div>
       <h1>On Going Games</h1>
+      <Series />
     </div>
   );
 };
