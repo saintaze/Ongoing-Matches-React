@@ -43,7 +43,7 @@ const SeriesTable: React.FC = (): JSX.Element => {
 
   const renderBodyRows = (): JSX.Element[] => {
     if(!filteredRows().length){
-      return [<tr className="Series__no-match Series__row Series__row--body"><td colSpan={5}>No Match... :(</td></tr>];
+      return [<tr className="Series__no-match Series__row Series__row--body" key={0}><td colSpan={5}>No Match... :(</td></tr>];
     }
     return filteredRows().map((s: Series)=> {
       return (
@@ -53,12 +53,12 @@ const SeriesTable: React.FC = (): JSX.Element => {
 
           <td className="Series__cell--body Series__cell--body-team-1" >
             <span className="Series__team-name" >{s.teams[0].name}</span>
-            <img className="Series__team-logo" draggable={false} src={s.teams[0].logoUrl} />
+            <img className="Series__team-logo" draggable={false} src={s.teams[0].logoUrl} alt=""/>
             <span className="Series__cross">&times;</span>
           </td>
 
           <td className="Series__cell--body Series__cell--body-team-2" >
-            <img className="Series__team-logo" draggable={false} src={s.teams[1].logoUrl} />
+            <img className="Series__team-logo" draggable={false} src={s.teams[1].logoUrl} alt=""/>
             <span className="Series__team-name" >{s.teams[1].name}</span>
           </td>
 
