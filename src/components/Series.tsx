@@ -23,43 +23,55 @@ const Series = () => {
    fetchSeries();
   },[]);
 
-  const formatTime = (str: string) => {
-    return moment(str).format('hh:mm');
+
+  const formatTime = (dateTime: string) => {
+    return moment(dateTime).format('hh:mm');
+  }
+
+  const isValidSearch = (char: string) => {
+    return /^[a-zA-Z\d\s]+$/.test(char);
   }
 
   const filteredRows = () => {
+    // if(!isValidSearch(title) || !isValidSearch(tournament)) return series
     const titleRegex = new RegExp(title, 'i');
     const tournamentRegex = new RegExp(tournament, 'i');
     return series.filter((s:any) => {
-      return s['title'].match(titleRegex) && s['tournament']['name'].match(tournamentRegex);
+      return s['title'].match(titleRegex) && s['tournament']['shortName'].match(tournamentRegex);
     });
   }
 
   const renderHeadRow = () => {
     const headerCells = ['title', 'time', 'team1', 'team2', 'tournament'];
-    return <tr className="Series__row--head">{ headerCells.map(c => <th className="Series__cell-head" key={c}>{c}</th>) }</tr>;
+    return <tr className="Series__row Series__row--head">{ headerCells.map(c => <th className="Series__cell--head" key={c}>{c}</th>) }</tr>;
   }
 
   const renderBodyRows = () => {
+    if(!filteredRows().length){
+      return <tr className="Series__no-match Series__row Series__row--body"><td colSpan={5}>No Match... :(</td></tr>;
+    }
     return filteredRows().map((s:any)=> {
       return (
-        <tr className="Series__row--body" key={s.id}>
-          <td className="Series__cell-body" >{s.title}</td>
-          <td className="Series__cell-body" >{formatTime(s.startTime)}</td>
-          {
-            s.teams.map((t:any) => (
-               <td className="Series__cell-body"  key={t.id}>
-                <span className="Series__team-name" >{t.name}</span>
-                <img className="Series__team-logo"  src={t.logoUrl} alt="logo"/>
-              </td>
-            ))
-          }
-          <td className="Series__cell-body" >{s.tournament.shortName}</td>
+        <tr className="Series__row Series__row--body" key={s.id}>
+          <td className="Series__cell--body" >{s.title}</td>
+          <td className="Series__cell--body" >{formatTime(s.startTime)}</td>
+
+          <td className="Series__cell--body Series__cell--body-team-1" >
+            <span className="Series__team-name" >{s.teams[0].name}</span>
+            <img className="Series__team-logo" draggable={false} src={s.teams[0].logoUrl} alt="logo"/>
+            <span className="Series__cross">&times;</span>
+          </td>
+
+          <td className="Series__cell--body Series__cell--body-team-2" >
+            <img className="Series__team-logo" draggable={false} src={s.teams[1].logoUrl} alt="logo"/>
+            <span className="Series__team-name" >{s.teams[1].name}</span>
+          </td>
+
+          <td className="Series__cell--body" >{s.tournament.shortName}</td>
         </tr>
       );
     });
   }
-
 
   return (
     <div className="Series">
@@ -70,7 +82,15 @@ const Series = () => {
       </div>
       <table className="Series__table">
         <thead>
-          {renderHeadRow()}
+          {/* {renderHeadRow()} */}
+
+          <tr className="Series__row Series__row--head">
+            <th className="Series__cell--head">title</th>
+            <th className="Series__cell--head">time</th>
+            <th className="Series__cell--head Series__cell--head-team-1">team 1</th>
+            <th className="Series__cell--head Series__cell--head-team-2">team 2</th>
+            <th className="Series__cell--head">tournament</th>
+          </tr>
         </thead>
         <tbody >
           {renderBodyRows()}

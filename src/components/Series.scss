@@ -1,39 +1,153 @@
 .Series {
-  // min-height: 100vh;
-  // background-color: #f7f7f7;
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 3.2rem 2rem 6rem;
+  text-align: center;
 
   &__heading {
+    font-size: 4rem;
+    line-height: 1.2;
+    font-family: "Oswald", sans-serif;
+    font-size: 4.4rem;
+    color: #2b3135;
   }
 
   &__filters {
+    text-align: center;
+    margin: 4rem 0 4rem;
   }
 
   &__filter {
+    display: inline-block;
+    font-family: inherit;
+    outline: none;
+    border: 1px solid #b9bfc6;
+    border: 1px solid #bec2c8;
+    padding: 1rem 1.8rem;
+    border-radius: 3px;
+    width: 24rem;
+    color: #2b3135;
+
+    &::placeholder {
+      color: #6c757e;
+    }
+
+    &:first-child {
+      margin-right: 1.4rem;
+    }
   }
 
   &__table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
   }
 
   &__row {
     &--head {
+      text-transform: uppercase;
+      background-color: #363b3f;
+      height: 3.2rem;
     }
 
     &--body {
+      padding: 9rem;
+      height: 5rem;
+      background-color: #2b3135;
+      color: white;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #4e5356;
+      }
+
+      &:hover {
+        transition: all 0.3s;
+        cursor: pointer;
+        background-color: lighten(#2b3135, 2);
+      }
     }
   }
 
   &__cell {
     &--head {
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+      color: #a1a3a5;
+      padding: 0 2rem;
+
+      &:last-child {
+        text-align: left;
+      }
+    }
+
+    &--head-team-1 {
+      text-align: right;
+      padding-right: 4rem;
+    }
+
+    &--head-team-2 {
+      text-align: left;
+      padding-left: 4rem;
     }
 
     &--body {
+      padding: 0 2rem;
+      font-weight: 500;
+      font-size: 1.4rem;
+
+      &:first-child,
+      &:last-child {
+        font-weight: 600;
+        letter-spacing: 0;
+        color: #a1a3a5;
+      }
+
+      &:last-child {
+        text-align: left;
+        font-weight: 500;
+      }
+    }
+
+    &--body-team-1 > *,
+    &--body-team-2 > * {
+      vertical-align: middle;
+      text-align: left;
+
+      &:first-child {
+        margin-right: 1rem;
+      }
+    }
+
+    &--body-team-1 {
+      text-align: right;
+      position: relative;
+      padding-right: 4rem;
+    }
+
+    &--body-team-2 {
+      text-align: left;
+      padding-left: 4rem;
     }
   }
 
-  &__team-name {
+  &__team-logo {
+    width: 1.8rem;
+    height: 1.8rem;
   }
 
-  &__team-logo {
-    width: 2rem;
+  &__cross {
+    font-size: 2.2rem;
+    display: inline-block;
+    color: #717578;
+    position: absolute;
+    right: -0.7rem;
+    top: 0.8rem;
+  }
+
+  &__no-match {
+    text-align: center;
+    font-size: 1.52rem;
   }
 }
