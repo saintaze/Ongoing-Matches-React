@@ -1,5 +1,5 @@
 .Series {
-  max-width: 90rem;
+  max-width: 81rem;
   margin: 0 auto;
   padding: 3.2rem 2rem 6rem;
   text-align: center;
@@ -21,15 +21,15 @@
     display: inline-block;
     font-family: inherit;
     outline: none;
-    border: 1px solid #b9bfc6;
-    border: 1px solid #bec2c8;
+    border: 1px solid #c4c1c1;
+    border: 1px solid #cac5c5;
     padding: 1rem 1.8rem;
     border-radius: 3px;
     width: 24rem;
     color: #2b3135;
 
     &::placeholder {
-      color: #6c757e;
+      color: #969292;
     }
 
     &:first-child {
@@ -53,7 +53,7 @@
 
     &--body {
       padding: 9rem;
-      height: 5rem;
+      height: 5.3rem;
       background-color: #2b3135;
       color: white;
 
@@ -64,7 +64,7 @@
       &:hover {
         transition: all 0.3s;
         cursor: pointer;
-        background-color: lighten(#2b3135, 2);
+        background-color: lighten(#2b3135, 2.5);
       }
     }
   }
@@ -78,7 +78,7 @@
       padding: 0 2rem;
 
       &:last-child {
-        text-align: left;
+        transform: translateX(-1px);
       }
     }
 
@@ -143,11 +143,11 @@
     color: #717578;
     position: absolute;
     right: -0.7rem;
-    top: 0.8rem;
+    top: 0.9rem;
   }
 
   &__no-match {
     text-align: center;
-    font-size: 1.52rem;
+    font-size: 1.45rem;
   }
 }

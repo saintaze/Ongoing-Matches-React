@@ -23,13 +23,16 @@ const Series = () => {
    fetchSeries();
   },[]);
 
-
   const formatTime = (dateTime: string) => {
     return moment(dateTime).format('hh:mm');
   }
 
   const isValidSearch = (char: string) => {
     return /^[a-zA-Z\d\s]+$/.test(char);
+  }
+
+  const handleTitleChange = e => {
+    
   }
 
   const filteredRows = () => {
@@ -39,11 +42,6 @@ const Series = () => {
     return series.filter((s:any) => {
       return s['title'].match(titleRegex) && s['tournament']['shortName'].match(tournamentRegex);
     });
-  }
-
-  const renderHeadRow = () => {
-    const headerCells = ['title', 'time', 'team1', 'team2', 'tournament'];
-    return <tr className="Series__row Series__row--head">{ headerCells.map(c => <th className="Series__cell--head" key={c}>{c}</th>) }</tr>;
   }
 
   const renderBodyRows = () => {
@@ -58,12 +56,12 @@ const Series = () => {
 
           <td className="Series__cell--body Series__cell--body-team-1" >
             <span className="Series__team-name" >{s.teams[0].name}</span>
-            <img className="Series__team-logo" draggable={false} src={s.teams[0].logoUrl} alt="logo"/>
+            <img className="Series__team-logo" draggable={false} src={s.teams[0].logoUrl} />
             <span className="Series__cross">&times;</span>
           </td>
 
           <td className="Series__cell--body Series__cell--body-team-2" >
-            <img className="Series__team-logo" draggable={false} src={s.teams[1].logoUrl} alt="logo"/>
+            <img className="Series__team-logo" draggable={false} src={s.teams[1].logoUrl} />
             <span className="Series__team-name" >{s.teams[1].name}</span>
           </td>
 
@@ -77,13 +75,11 @@ const Series = () => {
     <div className="Series">
       <h1 className="Series__heading">On Going Games</h1>
       <div className="Series__filters">
-        <input className="Series__filter" type="text" value={title} placeholder="Filter By Title..." onChange={e => setTitle(e.target.value) }/>
-        <input className="Series__filter" type="text" value={tournament} placeholder="Filter By Tournament..." onChange={e => setTournament(e.target.value) }/>
+        <input className="Series__filter" type="text" value={title} placeholder="Filter By Title" onChange={e => setTitle(e.target.value) }/>
+        <input className="Series__filter" type="text" value={tournament} placeholder="Filter By Tournament" onChange={e => setTournament(e.target.value) }/>
       </div>
       <table className="Series__table">
         <thead>
-          {/* {renderHeadRow()} */}
-
           <tr className="Series__row Series__row--head">
             <th className="Series__cell--head">title</th>
             <th className="Series__cell--head">time</th>
