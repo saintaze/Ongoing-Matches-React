@@ -3,7 +3,7 @@ import SeriesTable from './components/SeriesTable'
 
 import './App.scss';
 
-const App = () => {
+const App: React.FC = (): JSX.Element => {
   return (
      <div className="App">
       <SeriesTable />

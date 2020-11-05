@@ -22,14 +22,14 @@ const SeriesTable: React.FC = (): JSX.Element => {
   
   useEffect(() => {
    fetchSeries();
-  },[]);
+  }, []);
 
   const formatTime = (dateTime: string): string => {
     return moment(dateTime).format('hh:mm');
   }
 
-  const isValidSearch = (char: string): boolean => {
-    return /^[a-zA-Z\d\s]*$/.test(char);
+  const isValidSearch = (str: string): boolean => {
+    return /^[a-zA-Z\d\s]*$/.test(str);
   }
 
   const filteredRows = (): Series[] => {
@@ -41,9 +41,9 @@ const SeriesTable: React.FC = (): JSX.Element => {
     });
   }
 
-  const renderBodyRows = () => {
+  const renderBodyRows = (): JSX.Element[] => {
     if(!filteredRows().length){
-      return <tr className="Series__no-match Series__row Series__row--body"><td colSpan={5}>No Match... :(</td></tr>;
+      return [<tr className="Series__no-match Series__row Series__row--body"><td colSpan={5}>No Match... :(</td></tr>];
     }
     return filteredRows().map((s: Series)=> {
       return (

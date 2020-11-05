@@ -12,7 +12,6 @@ export interface Team {
   logoUrl: string;
 }
 
-
 export interface Series {
   id: number;
   title: string;

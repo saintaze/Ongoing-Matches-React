@@ -15,13 +15,19 @@
   &__filters {
     text-align: center;
     margin: 4rem 0 4rem;
+
+    @media screen and (max-width: 720px) {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__filter {
     display: inline-block;
     font-family: inherit;
     outline: none;
-    border: 1px solid #c4c1c1;
     border: 1px solid #cac5c5;
     padding: 1rem 1.8rem;
     border-radius: 3px;
@@ -34,6 +40,10 @@
 
     &:first-child {
       margin-right: 1.4rem;
+
+      @media screen and (max-width: 720px) {
+        margin: 0 0 1rem 0;
+      }
     }
   }
 
