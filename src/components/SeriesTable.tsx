@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import moment from 'moment';
+import {Series} from '../models';
 
-import './Series.scss';
+import './SeriesTable.scss';
 
-const Series = () => {
+const SeriesTable: React.FC = (): JSX.Element => {
 
-  const [series, setSeries] = useState([]);
-  const [title, setTitle] = useState('');
-  const [tournament, setTournament] = useState('');
+  const [series, setSeries] = useState<Series[]>([]);
+  const [title, setTitle] = useState<string>('');
+  const [tournament, setTournament] = useState<string>('');
 
-  const fetchSeries = async () => {
+  const fetchSeries = async (): Promise<void> => {
     try {
       const {data} = await axios.get('http://localhost:3001/series');
       setSeries(data);
@@ -23,23 +24,19 @@ const Series = () => {
    fetchSeries();
   },[]);
 
-  const formatTime = (dateTime: string) => {
+  const formatTime = (dateTime: string): string => {
     return moment(dateTime).format('hh:mm');
   }
 
-  const isValidSearch = (char: string) => {
-    return /^[a-zA-Z\d\s]+$/.test(char);
+  const isValidSearch = (char: string): boolean => {
+    return /^[a-zA-Z\d\s]*$/.test(char);
   }
 
-  const handleTitleChange = e => {
-    
-  }
-
-  const filteredRows = () => {
-    // if(!isValidSearch(title) || !isValidSearch(tournament)) return series
+  const filteredRows = (): Series[] => {
+    if(!isValidSearch(title) || !isValidSearch(tournament)) return [];
     const titleRegex = new RegExp(title, 'i');
     const tournamentRegex = new RegExp(tournament, 'i');
-    return series.filter((s:any) => {
+    return series.filter((s: Series) => {
       return s['title'].match(titleRegex) && s['tournament']['shortName'].match(tournamentRegex);
     });
   }
@@ -48,7 +45,7 @@ const Series = () => {
     if(!filteredRows().length){
       return <tr className="Series__no-match Series__row Series__row--body"><td colSpan={5}>No Match... :(</td></tr>;
     }
-    return filteredRows().map((s:any)=> {
+    return filteredRows().map((s: Series)=> {
       return (
         <tr className="Series__row Series__row--body" key={s.id}>
           <td className="Series__cell--body" >{s.title}</td>
@@ -96,4 +93,4 @@ const Series = () => {
   )
 }
 
-export default Series;
+export default SeriesTable;

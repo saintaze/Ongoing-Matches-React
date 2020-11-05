@@ -1,12 +1,12 @@
 import React from 'react'
-import Series from './components/Series'
+import SeriesTable from './components/SeriesTable'
 
 import './App.scss';
 
 const App = () => {
   return (
      <div className="App">
-      <Series />
+      <SeriesTable />
     </div>
   )
 }
