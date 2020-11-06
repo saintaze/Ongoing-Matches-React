@@ -1,20 +1,26 @@
-# Grid Frontend Coding Test
+# Ongoing-Matches-React
 
-# Requirements
+A demo app that displays table of ongoing competitive gaming matches.
 
-Please do the following tasks in order
+## Features
 
-- Retrieve the data from the static series endpoint, and output this into a table or list
-- Add in the ability to be able to filter this table/list by title along with a text filter for tournament name
-- Use whatever your feel comfortable to style the table/list following the design below
+- Beautiful UI
+- Error Handling
+- Filter Data by Title or Tournament
 
-## Table Designs
+## Built With
 
-- https://www.figma.com/file/CoIVwq0YUHfHnTvnUTpiAS/Interview-Design
+- HTML5
+- SASS
+- React
 
-## Getting started
+![Ongoing-Matches-Table](https://ibb.co/nR0M9v7)
 
-In the project directory, you can run:
+## Getting Started
+
+clone repo
+
+`cd` into folder and run `npm install`
 
 ### `yarn server`
 
@@ -27,10 +33,6 @@ Runs the mock server to be able to get fixtures via a http request available end
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# Author
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Saintaze [@saintaze](https://github.com/saintaze/)
