@@ -1,5 +1,3 @@
-
-
 # Grid Frontend Coding Test
 
 # Requirements
@@ -11,6 +9,7 @@ Please do the following tasks in order
 - Use whatever your feel comfortable to style the table/list following the design below
 
 ## Table Designs
+
 - https://www.figma.com/file/CoIVwq0YUHfHnTvnUTpiAS/Interview-Design
 
 ## Getting started
@@ -20,6 +19,7 @@ In the project directory, you can run:
 ### `yarn server`
 
 Runs the mock server to be able to get fixtures via a http request available endpoints are;
+
 - http://localhost:3001/series
 
 ### `yarn start`
