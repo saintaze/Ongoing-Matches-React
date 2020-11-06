@@ -13,8 +13,10 @@ A demo app that displays table of ongoing competitive gaming matches.
 - HTML5
 - SASS
 - React
+- Node
+- Express
 
-![Ongoing-Matches-Table](https://ibb.co/nR0M9v7)
+![Ongoing-Matches-Table](https://img.techpowerup.org/201106/screen-shot-2020-11-06-at-4-22-26-am.png)
 
 ## Getting Started
 
